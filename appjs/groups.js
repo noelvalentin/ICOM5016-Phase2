@@ -20,7 +20,7 @@ angular.module('PMAPP').controller('GroupsController', ['$http', '$log', '$scope
             // Get the list of parts from the servers via REST API
 
             // First set up the url for the route
-            var url = "http://localhost:5000/PhotoMessagingApp/chat";
+            var url = "http://localhost:5000/PhotoMessagingApp/home/groups";
 
             // Now set up the $http object
             // It has two function call backs, one for success and one for error
