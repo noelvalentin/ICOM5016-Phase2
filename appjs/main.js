@@ -31,7 +31,7 @@
             templateUrl: 'pages/contacts.html',
            controller: 'ContactsController',
            controllerAs : 'contactsCtrl'
-        }).when('/messagesByGroup', {
+        }).when('/messagesByGroup/:gid', {
             templateUrl: 'pages/messagesByGroup.html',
            controller: 'MessagesByGroupController',
            controllerAs : 'mbgCtrl'
