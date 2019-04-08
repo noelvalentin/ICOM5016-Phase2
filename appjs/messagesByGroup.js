@@ -1,25 +1,16 @@
-angular.module('PMAPP').controller('MessagesByGroupController', ['$http', '$log', '$scope',
-    function($http, $log, $scope) {
+angular.module('PMAPP').controller('MessagesByGroupController', ['$http', '$log', '$scope', '$rootScope', '$location', '$routeParams',
+    function($http, $log, $scope, $rootScope, $location, $routeParams)  {
         var thisCtrl = this;
 
         this.mbgList = [];
         this.counter  = 2;
         this.newText = "";
 
-        this.loadMessages = function(){
-            // Get the messages from the server through the rest api
-            thisCtrl.messageList.push({"id": 1, "text": "Hola Mi Amigo", "author" : "Bob",
-            "like" : 4, "nolike" : 1});
-            thisCtrl.messageList.push({"id": 2, "text": "Hello World", "author": "Joe",
-                "like" : 11, "nolike" : 12});
-
-            $log.error("Message Loaded: ", JSON.stringify(thisCtrl.messageList));
-        };
            this.loadMessages = function(){
-            // Get the list of parts from the servers via REST API
+            var gId = $routeParams.gid;
 
             // First set up the url for the route
-            var url = "http://localhost:5000/PhotoMessagingApp/chat";
+            var url = "http://localhost:5000/PhotoMessagingApp/home/groups/" + gId + "/messages";
 
             // Now set up the $http object
             // It has two function call backs, one for success and one for error
@@ -31,7 +22,7 @@ angular.module('PMAPP').controller('MessagesByGroupController', ['$http', '$log'
 
                     console.log("response: " + JSON.stringify(response));
 
-                    thisCtrl.mbgList = response.data.Messsages;
+                    thisCtrl.mbgList = response.data.Messages;
                     $rootScope.prueba = "Probando";
             }, // error callback
             function (response){
@@ -78,3 +69,4 @@ angular.module('PMAPP').controller('MessagesByGroupController', ['$http', '$log'
 
         this.loadMessages();
 }]);
+
