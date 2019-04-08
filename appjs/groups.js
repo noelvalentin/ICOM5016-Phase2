@@ -32,7 +32,7 @@ angular.module('PMAPP').controller('GroupsController', ['$http', '$log', '$scope
 
                     console.log("response: " + JSON.stringify(response));
 
-                    thisCtrl.groupList = response.data.Messsages;
+                    thisCtrl.groupList = response.data.Groups;
                     $rootScope.prueba = "Probando";
             }, // error callback
             function (response){
@@ -77,8 +77,8 @@ angular.module('PMAPP').controller('GroupsController', ['$http', '$log', '$scope
             $location.url('/groupMembers');
         };
 
-        this.viewMBG = function(){
-            $location.url('/messagesByGroup');
+        this.viewMBG = function(gid){
+            $location.url('/messagesByGroup/' + gid);
         };
         this.showdetails =function(){
             $location.url('/postDetails');
